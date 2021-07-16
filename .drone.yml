@@ -36,12 +36,16 @@ concurrency:
       limit: 1
 
 server:
-    host:
-      from_secret: test-server
-    user: 
-      from_secret: username
-    ssh_key: 
-      from_secret: ssh_key
+  host:
+    from_secret: test-server
+  user: 
+    from_secret: username
+  ssh_key: 
+    from_secret: ssh_key
+
+platform:
+      os: linux
+      arch: amd64
 
 steps:
     - name: greeting
