@@ -24,3 +24,12 @@ steps:
       - echo "$DRONE_BRANCH" >> /root/test.txt
       - echo "$DRONE_REPO" >> /root/test.txt
       
+trigger:
+      branch:
+      - master
+      
+      steps:
+          - name: greeting
+            commands:
+            - echo "$DRONE_BRANCH" >> /root/test.txt
+            - echo "$DRONE_REPO" >> /root/test.txt
