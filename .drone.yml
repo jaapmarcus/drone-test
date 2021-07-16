@@ -21,4 +21,6 @@ platform:
 steps:
     - name: greeting
       commands:
-      - echo "Jaap" > /root/test.txt 
+      - echo "$DRONE_BRANCH" > /root/test.txt
+      - echo "$DRONE_REPO" > /root/test.txt
+      
