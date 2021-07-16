@@ -29,6 +29,7 @@ trigger:
 
 ---      
 kind: pipeline
+type: ssh
 name: pull-request
 
 concurrency:
