@@ -23,13 +23,30 @@ steps:
       commands:
       - echo "$DRONE_BRANCH" >> /root/test.txt
       - echo "$DRONE_REPO" >> /root/test.txt
-      
+
 trigger:
-      branch:
-      - master
-      
-      steps:
-          - name: greeting
-            commands:
-            - echo "$DRONE_BRANCH" >> /root/test.txt
-            - echo "$DRONE_REPO" >> /root/test.txt
+      event: [ push ]
+
+---      
+kind: pipeline
+name: pull-request
+
+concurrency:
+      limit: 1
+
+server:
+    host:
+      from_secret: test-server
+    user: 
+      from_secret: username
+    ssh_key: 
+      from_secret: ssh_key
+
+steps:
+    - name: greeting
+      commands:
+      - echo "$DRONE_BRANCH" >> /root/test.txt
+      - echo "$DRONE_REPO" >> /root/test.txt
+
+trigger:
+  event: [ pull_request ]
