@@ -27,6 +27,8 @@ steps:
       - echo "$DRONE_SOURCE_BRANCH" >> /root/test.txt
       - echo "$DRONE_REPO" >> /root/test.txt
       - echo "$DRONE_REPO_BRANCH" >> /root/test.txt
+      - echo "$DRONE_REFSPEC" >> /root/test.txt
+      - echo "DRONE_GIT_HTTP_URL" >> /root/test.txt
 trigger:
       event: [ push ]
 
@@ -59,6 +61,8 @@ steps:
       - echo "$DRONE_SOURCE_BRANCH" >> /root/test.txt
       - echo "$DRONE_REPO" >> /root/test.txt
       - echo "$DRONE_REPO_BRANCH" >> /root/test.txt
+      - echo "$DRONE_REFSPEC" >> /root/test.txt
+      - echo "DRONE_GIT_HTTP_URL" >> /root/test.txt
 
 trigger:
   event: [ pull_request ]
