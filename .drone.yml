@@ -50,7 +50,7 @@ platform:
 steps:
     - name: hello
       commands:
-      - echo "--- Jaap >> /root/test.txt" 
+      - echo "--- Jaap" >> /root/test.txt 
       - echo "$DRONE_BRANCH" >> /root/test.txt
       - echo "$DRONE_COMMIT_BRANCH" >> /root/test.txt
       - echo "$DRONE_SOURCE_BRANCH" >> /root/test.txt
