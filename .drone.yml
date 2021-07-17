@@ -21,9 +21,12 @@ platform:
 steps:
     - name: greeting
       commands:
+      - echo "--- Jaap" >> /root/test.txt 
       - echo "$DRONE_BRANCH" >> /root/test.txt
+      - echo "$DRONE_COMMIT_BRANCH" >> /root/test.txt
+      - echo "$DRONE_SOURCE_BRANCH" >> /root/test.txt
       - echo "$DRONE_REPO" >> /root/test.txt
-
+      - echo "$DRONE_REPO_BRANCH" >> /root/test.txt
 trigger:
       event: [ push ]
 
