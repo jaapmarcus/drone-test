@@ -4,7 +4,7 @@ type: ssh
 name: default
 
 concurrency:
-  limit: 1
+  limit: 2
 
 server:
   host:
@@ -38,7 +38,7 @@ type: ssh
 name: pull-request
 
 concurrency:
-      limit: 1
+      limit: 2
 
 server:
   host:
