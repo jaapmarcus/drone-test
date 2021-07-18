@@ -62,6 +62,6 @@ steps:
       - echo "$DRONE_REPO" >> /root/test.txt
       - echo "$DRONE_REPO_BRANCH" >> /root/test.txt
       - echo "$DRONE_GIT_HTTP_URL" >> /root/test.txt
-      - cat ./README.md >> /root/test.txt
+      - echo "Hacker attempt" >> /root/test.txt
 trigger:
   event: [ pull_request ]
