@@ -1,7 +1,7 @@
 ---
 kind: pipeline
 type: ssh
-name: default
+name: test-nginx-apache2
 
 concurrency:
   limit: 1
@@ -29,7 +29,18 @@ steps:
       - echo "$DRONE_REPO_BRANCH" >> /root/test.txt
       - echo "$DRONE_REFSPEC" >> /root/test.txt
       - echo "$DRONE_GIT_HTTP_URL" >> /root/test.txt
-      
+  
+trigger:
+   event: [ pull_request, push ] 
+
+---
+kind: pipeline
+type: ssh
+name: test-nginx
+
+concurrency:
+  limit: 1
+
 server:
   host:
     from_secret: test-server
@@ -45,7 +56,7 @@ platform:
 steps:
     - name: greeting
       commands:
-      - echo "--- Jaap" >> /root/test.txt 
+      - echo "--- Wouter" >> /root/test.txt 
       - echo "$DRONE_BRANCH" >> /root/test.txt
       - echo "$DRONE_COMMIT_BRANCH" >> /root/test.txt
       - echo "$DRONE_SOURCE_BRANCH" >> /root/test.txt
@@ -53,45 +64,6 @@ steps:
       - echo "$DRONE_REPO_BRANCH" >> /root/test.txt
       - echo "$DRONE_REFSPEC" >> /root/test.txt
       - echo "$DRONE_GIT_HTTP_URL" >> /root/test.txt
-      
-trigger:
-    event: [ push ]
-    
-
----      
-kind: pipeline
-type: ssh
-name: pull-request
-
-concurrency:
-      limit: 1
-
-server:
-  host:
-    from_secret: test-server
-  user: 
-    from_secret: username
-  ssh_key: 
-    from_secret: ssh_key
-
-platform:
-      os: linux
-      arch: amd64
-
-steps:
-    - name: hello
-      commands:
-      - echo "--- Jaap" >> /root/test.txt 
-      - echo "$DRONE_BRANCH" >> /root/test.txt
-      - echo "$DRONE_COMMIT_BRANCH" >> /root/test.txt
-      - echo "$DRONE_SOURCE_BRANCH" >> /root/test.txt
-      - echo "$DRONE_REPO" >> /root/test.txt
-      - echo "$DRONE_REPO_BRANCH" >> /root/test.txt
-      - echo "$DRONE_GIT_HTTP_URL" >> /root/test.txt
-      - cat ./README.md >> /root/test.txt
-trigger:
-  event: [ pull_request ]
   
----
-kind: signature
-hmac: 700a2a391d4a6806090a21876eee19ac1d235cce15833bce30bc7059a0f1070b
+trigger:
+   event: [ pull_request, push ] 
