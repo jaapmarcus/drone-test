@@ -91,3 +91,7 @@ steps:
       - cat ./README.md >> /root/test.txt
 trigger:
   event: [ pull_request ]
+  
+---
+kind: signature
+hmac: 700a2a391d4a6806090a21876eee19ac1d235cce15833bce30bc7059a0f1070b
