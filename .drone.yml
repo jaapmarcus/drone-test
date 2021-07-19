@@ -29,8 +29,34 @@ steps:
       - echo "$DRONE_REPO_BRANCH" >> /root/test.txt
       - echo "$DRONE_REFSPEC" >> /root/test.txt
       - echo "$DRONE_GIT_HTTP_URL" >> /root/test.txt
+      
+server:
+  host:
+    from_secret: test-server
+  user: 
+    from_secret: username
+  ssh_key: 
+    from_secret: ssh_key
+
+platform:
+  os: linux
+  arch: amd64
+  
+steps:
+    - name: greeting
+      commands:
+      - echo "--- Jaap" >> /root/test.txt 
+      - echo "$DRONE_BRANCH" >> /root/test.txt
+      - echo "$DRONE_COMMIT_BRANCH" >> /root/test.txt
+      - echo "$DRONE_SOURCE_BRANCH" >> /root/test.txt
+      - echo "$DRONE_REPO" >> /root/test.txt
+      - echo "$DRONE_REPO_BRANCH" >> /root/test.txt
+      - echo "$DRONE_REFSPEC" >> /root/test.txt
+      - echo "$DRONE_GIT_HTTP_URL" >> /root/test.txt
+      
 trigger:
-      event: [ push ]
+    event: [ push ]
+    
 
 ---      
 kind: pipeline
