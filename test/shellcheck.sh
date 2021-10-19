@@ -34,7 +34,7 @@ for file in $files; do
        printf "%s: \033[0;31m Fail \033[0m\n" "$file"
        err=1
     else 
-       printf "%s: \033[0;31m Success \033[0m\n" "$file"
+       printf "%s: \033[0;32m Success \033[0m\n" "$file"
         shellcheck -x "$file" -e "SC2086,SC2002,SC2153,SC2181,SC2153,SC2129,SC2016,SC2196,SC1090,SC2031,SC2010,SC2143,SC2046" 
     fi
 done
