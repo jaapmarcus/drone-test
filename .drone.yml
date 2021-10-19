@@ -10,7 +10,7 @@ steps:
   - name: shellcheck
     image: koalaman/shellcheck-alpine
     commands:
-    - bash ./test/shellcheck.sh
+    - ./test/shellcheck.sh
       
 trigger:
    event: [ pull_request, push ] 
