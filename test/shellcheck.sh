@@ -22,8 +22,11 @@ run_shell_check() {
     if [ -f "$1" ]; then 
     # -x "$1" 
         echo "Linting: $1"
-        shellcheck -x  "$1" --severity="error" -e "SC2086,SC2002,SC2153,SC2181,SC2153,SC2129,SC2016,SC2196,SC1090,SC2031,SC2010,SC2143,SC2046" && echo -e "\e[32mOK\e[39m" \
-        || { echo -e "\e[31mFAIL\e[39m"; err=1; }
+        if  shellcheck -x  "$1" --severity="error" -e "SC2086,SC2002,SC2153,SC2181,SC2153,SC2129,SC2016,SC2196,SC1090,SC2031,SC2010,SC2143,SC2046" -gte 0; then 
+            echo "Success";
+        else 
+            echo "Fail"
+        fi
     
     fi
 }
