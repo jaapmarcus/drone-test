@@ -1,5 +1,8 @@
 #!/bin/sh
 
+RED='\033[0;31m'
+NC='\033[0m' # No Color
+
 # To be used with in shellcheck and automated usage 
 # Generate timestamp
 
@@ -32,7 +35,8 @@ for file in $files; do
     echo "Linting: $file"
     shellcheck -x "$file" --severity="error" -e "SC2086,SC2002,SC2153,SC2181,SC2153,SC2129,SC2016,SC2196,SC1090,SC2031,SC2010,SC2143,SC2046" 
     if [ $? -gt 0 ]; then 
-        echo "\033[0;31m FAIL"; err=1;
+       printf "I ${RED}love${NC} Stack Overflow\n"
+       err=1
     else 
         echo "\032[0;31m OK"
         shellcheck -x "$file" --severity="info" -e "SC2086,SC2002,SC2153,SC2181,SC2153,SC2129,SC2016,SC2196,SC1090,SC2031,SC2010,SC2143,SC2046" 
