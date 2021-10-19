@@ -11,7 +11,7 @@ steps:
     image: osshelp/drone-linter
     settings:
       skip_yml: true
-      skip_sh: true
+      skip_sh: false
       skip_dockerfile: true
       skip_markdown: true
       skip_python: true
