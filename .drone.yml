@@ -7,14 +7,10 @@ concurrency:
   limit: 1
 
 steps:
-  - name: lint
-    image: osshelp/drone-linter
-    settings:
-      skip_yml: true
-      skip_dockerfile: true
-      skip_markdown: true
-      skip_python: true
-      skip_json: true
+  - name: shellcheck
+    image: koalaman/shellcheck
+    commands:
+    - ./test/shellcheck.sh
       
 trigger:
    event: [ pull_request, push ] 
