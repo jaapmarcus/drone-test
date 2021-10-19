@@ -1,69 +1,21 @@
 ---
 kind: pipeline
-type: ssh
-name: test-nginx-apache2
+type: docker
+name: shellcheck
 
 concurrency:
   limit: 1
 
-server:
-  host:
-    from_secret: test-server
-  user: 
-    from_secret: username
-  ssh_key: 
-    from_secret: ssh_key
-
-platform:
-  os: linux
-  arch: amd64
-  
 steps:
-    - name: greeting
-      commands:
-      - echo "--- Jaap" >> /root/test.txt 
-      - echo "$DRONE_BRANCH" >> /root/test.txt
-      - echo "$DRONE_COMMIT_BRANCH" >> /root/test.txt
-      - echo "$DRONE_SOURCE_BRANCH" >> /root/test.txt
-      - echo "$DRONE_REPO" >> /root/test.txt
-      - echo "$DRONE_REPO_BRANCH" >> /root/test.txt
-      - echo "$DRONE_REFSPEC" >> /root/test.txt
-      - echo "$DRONE_GIT_HTTP_URL" >> /root/test.txt
-  
-trigger:
-   event: [ pull_request, push ] 
-
----
-kind: pipeline
-type: ssh
-name: test-nginx
-
-concurrency:
-  limit: 1
-
-server:
-  host:
-    from_secret: test-server
-  user: 
-    from_secret: username
-  ssh_key: 
-    from_secret: ssh_key
-
-platform:
-  os: linux
-  arch: amd64
-  
-steps:
-    - name: greeting
-      commands:
-      - echo "--- Wouter" >> /root/test.txt 
-      - echo "$DRONE_BRANCH" >> /root/test.txt
-      - echo "$DRONE_COMMIT_BRANCH" >> /root/test.txt
-      - echo "$DRONE_SOURCE_BRANCH" >> /root/test.txt
-      - echo "$DRONE_REPO" >> /root/test.txt
-      - echo "$DRONE_REPO_BRANCH" >> /root/test.txt
-      - echo "$DRONE_REFSPEC" >> /root/test.txt
-      - echo "$DRONE_GIT_HTTP_URL" >> /root/test.txt
-  
+  - name: lint
+    image: osshelp/drone-linter
+    settings:
+      skip_yml: true
+      skip_sh: true
+      skip_dockerfile: true
+      skip_markdown: true
+      skip_python: true
+      skip_json: true
+      
 trigger:
    event: [ pull_request, push ] 
