@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 # To be used with in shellcheck and automated usage 
 # Generate timestamp
