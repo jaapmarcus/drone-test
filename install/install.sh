@@ -2,4 +2,5 @@
 
 echo "jaap"
 
-echo $1 
+if 1 =1; then 
+echo "jaap"
