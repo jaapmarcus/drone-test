@@ -2,5 +2,4 @@
 
 echo "jaap"
 
-i="1";
-echo $i
+echo $1 
