@@ -34,5 +34,6 @@ run_shell_check() {
 files=$(grep -rlE '#!/bin/(bash|sh)' ../ | grep -vE '\.(git|j2$|md$)' | sed 's|../||')
 
 for file in $files; do 
+    echo "$file"
     run_shell_check "$file"
 done
