@@ -2,6 +2,5 @@
 
 echo "jaap"
 
-for i in $( ls /home/ ); do 
+i="1";
 echo $i
-fi
