@@ -31,11 +31,11 @@ for file in $files; do
     echo "Linting: $file"
     shellcheck -x "$file" --severity="error" -e "SC2086,SC2002,SC2153,SC2181,SC2153,SC2129,SC2016,SC2196,SC1090,SC2031,SC2010,SC2143,SC2046" 
     if [ $? -gt 0 ]; then 
-       printf "\033[0;31m Fail \033[0m\n"
+       printf "$file: \033[0;31m Fail \033[0m\n"
        err=1
     else 
-       printf "\033[0;32m PASS \033[0m\n"
-        shellcheck -x "$file" --severity="info" -e "SC2086,SC2002,SC2153,SC2181,SC2153,SC2129,SC2016,SC2196,SC1090,SC2031,SC2010,SC2143,SC2046" 
+       printf "$file: \033[0;32m PASS \033[0m\n"
+        shellcheck -x "$file" -e "SC2086,SC2002,SC2153,SC2181,SC2153,SC2129,SC2016,SC2196,SC1090,SC2031,SC2010,SC2143,SC2046" 
     fi
 done
 
