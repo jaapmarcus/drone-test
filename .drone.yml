@@ -13,4 +13,9 @@ steps:
     - ./test/shellcheck.sh
       
 trigger:
-   event: [ pull_request, push ] 
+   branch:
+   - master 
+   - beta/*
+   - staging/*
+   event:
+   - push
