@@ -11,10 +11,28 @@ steps:
     image: koalaman/shellcheck-alpine
     commands:
     - ./test/shellcheck.sh
-      
+
 trigger:
-   ref:
-    include:
-      - refs/pull/*
-      - refs/heads/master
-      - refs/heads/staging/*
+  event: [ pull_request ]
+
+---
+kind: pipeline
+type: docker
+name: shellcheck
+
+concurrency:
+  limit: 1
+
+steps:
+  - name: shellcheck
+    image: koalaman/shellcheck-alpine
+    commands:
+    - ./test/shellcheck.sh
+
+trigger:
+  event: [ push ]
+  branch: 
+  - master
+  - release
+  - staging/*
+  - beta/*
