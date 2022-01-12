@@ -1,7 +1,7 @@
 ---
 kind: pipeline
 type: docker
-name: shellcheck
+name: [Pull] Shellcheck
 
 concurrency:
   limit: 1
@@ -24,7 +24,7 @@ concurrency:
   limit: 1
 
 steps:
-  - name: shellcheck
+  - name: [Push] Shellcheck
     image: koalaman/shellcheck-alpine
     commands:
     - ./test/shellcheck.sh
