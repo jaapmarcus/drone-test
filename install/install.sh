@@ -3,5 +3,5 @@
 echo "jaap"
 
 if [ 1 = 1 ] ; then 
-echo "jaap"
+echo "Jaap"
 fi
