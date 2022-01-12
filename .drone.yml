@@ -15,6 +15,6 @@ steps:
 trigger:
    ref:
     include:
-      - refs/pull/**
+      - refs/pull/*
       - refs/heads/master
-      - refs/heads/staging/**
+      - refs/heads/staging/*
