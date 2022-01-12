@@ -18,13 +18,13 @@ trigger:
 ---
 kind: pipeline
 type: docker
-name: shellcheck
+name: [Push] Shellcheck
 
 concurrency:
   limit: 1
 
 steps:
-  - name: [Push] Shellcheck
+  - name: shellcheck
     image: koalaman/shellcheck-alpine
     commands:
     - ./test/shellcheck.sh
