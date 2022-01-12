@@ -13,11 +13,8 @@ steps:
     - ./test/shellcheck.sh
       
 trigger:
-   branch:
-   - master 
-   - beta/*
-   - staging/*
-   - release/*
-   event:
-   - push
-   
+   ref:
+    include:
+      - refs/pull/**
+      - refs/heads/master
+      - refs/heads/staging/**
