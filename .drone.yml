@@ -17,5 +17,7 @@ trigger:
    - master 
    - beta/*
    - staging/*
+   - release/*
    event:
    - push
+   
