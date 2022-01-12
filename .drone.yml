@@ -1,7 +1,7 @@
 ---
 kind: pipeline
 type: docker
-name: [Pull] Shellcheck
+name: Pull Shellcheck
 
 concurrency:
   limit: 1
@@ -18,7 +18,7 @@ trigger:
 ---
 kind: pipeline
 type: docker
-name: [Push] Shellcheck
+name: Push Shellcheck
 
 concurrency:
   limit: 1
