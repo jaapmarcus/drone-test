@@ -26,6 +26,7 @@ run_shell_check() {
 # Exclude: /usr/local/hestia/src/
 
 files=$(grep -rlE '#!/bin/(bash|sh)' ./ | grep -vE '\.(git|j2$|md$)'); 
+err=0
 
 for file in $files; do 
     echo "Linting: $file"
@@ -39,4 +40,4 @@ for file in $files; do
     fi
 done
 
-exit "$err";
+exit "$err"
