@@ -39,4 +39,4 @@ for file in $files; do
     fi
 done
 
-exit "$err";
+exit "$err"
