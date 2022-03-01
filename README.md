@@ -7,3 +7,6 @@ Dit is een test
 Jaap
 
 En Jaap 
+
+[Duck Duck Go](https://duckduckgo.com)
+[CVE-2022-0752](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2022-0752) / [CVE-2022-0753](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2022-0753)
