@@ -19,7 +19,7 @@ platform:
   arch: amd64
    
 steps:
-- name: Test
+- name: Run tests
   commands:
   - echo "Jaap"; 
 
