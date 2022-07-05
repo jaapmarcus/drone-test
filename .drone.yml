@@ -1,7 +1,7 @@
 ---
 kind: pipeline
 type: ssh
-name: Ubuntu | Nginx + Apache2  
+name: Test 
 
 concurrency:
   limit: 1
