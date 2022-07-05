@@ -8,9 +8,9 @@ concurrency:
 
 server:
   host:
-    from_secret: server_address
+    from_secret: dev.eris.nu
   user: 
-    from_secret: username
+    from_secret: root
   ssh_key: 
     from_secret: ssh_key
 
