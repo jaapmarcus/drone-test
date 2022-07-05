@@ -29,7 +29,7 @@ trigger:
   - refs/heads/staging/*
   - refs/heads/beta
   - refs/heads/release
-  - refs/heads/main
+  - refs/heads/master
   - refs/pull/*/head
 
 ---
