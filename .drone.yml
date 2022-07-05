@@ -1,7 +1,7 @@
 ---
 kind: pipeline
 type: ssh
-name: Test 
+name: Test
 
 concurrency:
   limit: 1
@@ -21,7 +21,15 @@ platform:
 steps:
 - name: Test
   commands:
-  - ls ~/ -lah
+  - ls /root/
 
 trigger:
-    event: [ pull_request, push ] 
+  event: [ pull_request, push ]
+  ref:
+  - refs/heads/staging/*
+  - refs/heads/beta
+  - refs/heads/release
+  - refs/heads/main
+  - refs/pull/*/head
+
+---
