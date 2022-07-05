@@ -22,3 +22,6 @@ steps:
 - name: Test
   commands:
   - ls ~/ -lah
+
+trigger:
+    event: [ pull_request, push ] 
