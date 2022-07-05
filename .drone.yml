@@ -1,20 +1,24 @@
 ---
 kind: pipeline
-type: docker
-name: Pull Shellcheck
+type: ssh
+name: Ubuntu | Nginx + Apache2  
 
 concurrency:
   limit: 1
 
-steps:
-  - name: shellcheck
-    image: koalaman/shellcheck-alpine
-    commands:
-    - ./test/shellcheck.sh
+server:
+  host:
+    from_secret: server_address
+  user: 
+    from_secret: username
+  ssh_key: 
+    from_secret: ssh_key
 
-trigger:
-  ref:
-  - refs/heads/staging/*
-  - refs/heads/beta
-  - refs/heads/master
-  - refs/pull/*/head
+platform:
+  os: linux
+  arch: amd64
+   
+steps:
+- name: Test
+  commands:
+  - ls ~/ -lah
