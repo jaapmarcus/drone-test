@@ -31,5 +31,3 @@ trigger:
   - refs/heads/release
   - refs/heads/master
   - refs/pull/*/head
-
----
