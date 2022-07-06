@@ -1,18 +1,7 @@
 ---
 kind: pipeline
-type: ssh
+type: exec
 name: default
-
-concurrency:
-  limit: 1
-
-server:
-  host:
-    from_secret: server_adress
-  user: 
-    from_secret: username
-  ssh_key: 
-    from_secret: ssh_key
 
 platform:
   os: linux
