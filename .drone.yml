@@ -1,7 +1,7 @@
 ---
 kind: pipeline
 type: docker
-name: Linting
+name: Lint
 
 concurrency:
   limit: 1
