@@ -1,16 +1,20 @@
 ---
 kind: pipeline
 type: docker
-name: [Pull] Shellcheck
+name: Linting
 
 concurrency:
   limit: 1
 
 steps:
-  - name: shellcheck
+  - name: Shellcheck
     image: koalaman/shellcheck-alpine
     commands:
     - ./test/shellcheck.sh
+  - name: PHP 8.1
+    image: php:8.1-cli-bullseye
+    commands:
+      - ./test/check_php.sh ./web/
 
 trigger:
-  event: [ pull_request ]
+   event: [ pull_request, push ] 
