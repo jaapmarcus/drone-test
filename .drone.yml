@@ -14,3 +14,20 @@ steps:
 
 trigger:
    event: [ pull_request, push ] 
+
+---
+kind: pipeline
+type: docker
+name: Test 2
+
+concurrency:
+  limit: 1
+
+steps:
+  - name: Shellcheck
+    image: koalaman/shellcheck-alpine
+    commands:
+    - ./test/shellcheck.sh
+
+trigger:
+   event: [ pull_request, push ] 
