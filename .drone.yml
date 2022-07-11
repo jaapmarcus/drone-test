@@ -17,17 +17,26 @@ trigger:
 
 ---
 kind: pipeline
-type: docker
-name: Test 2
+type: ssh
+name: default
 
 concurrency:
   limit: 1
 
-steps:
-  - name: Shellcheck
-    image: koalaman/shellcheck-alpine
-    commands:
-    - ./test/shellcheck.sh
+server:
+  host:
+    from_secret: server_adress
+  user: 
+    from_secret: username
+  ssh_key: 
+    from_secret: ssh_key
 
-trigger:
-   event: [ pull_request, push ] 
+platform:
+  os: linux
+  arch: amd64
+  
+steps:
+    - name: greeting
+      commands:
+      - echo "$DRONE_BRANCH" >> /root/test.txt
+      - echo "$DRONE_REPO" >> /root/test.txt
